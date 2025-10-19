@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Riven | Minecraft Developer & Manager</title>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+<style>
+  body {
+    margin: 0;
+    font-family: 'Press Start 2P', cursive;
+    color: #fff;
+    background: url('https://ibb.co/8DXKRKhg/jpZ5JXG.jpg') no-repeat center center fixed;
+    background-size: cover;
+    overflow-x: hidden;
+  }
+  header {
+    text-align: center;
+    padding: 100px 20px 50px;
+    background: rgba(0,0,0,0.5);
+  }
+  h1 { font-size: 28px; color: #00ff9d; text-shadow: 2px 2px #000; }
+  h2 { font-size: 14px; color: #fff; text-shadow: 1px 1px #000; margin-top: 10px; }
+  section {
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 20px;
+    background: rgba(0,0,0,0.5);
+    border-radius: 12px;
+    box-shadow: 0 0 20px #00ff9d55;
+    text-align: center;
+  }
+  h3 { font-size: 14px; color: #00ff9d; border-bottom: 2px solid #00ff9d; padding-bottom: 5px; margin-bottom: 20px; }
+  p, li, a { font-size: 12px; line-height: 1.6; }
+  ul { list-style-type: square; padding-left: 20px; }
+  .social a { display:block; margin:5px 0; color: #00ff9d; text-decoration:none; }
+  .social a:hover { color:#fff; }
+  #particles { position: fixed; top:0; left:0; width:100%; height:100%; z-index:-1; background: rgba(0,0,0,0.2); overflow:hidden; }
+  canvas { display:block; }
+  @media (max-width:600px) { h1{font-size:20px;} a{font-size:12px;} }
+</style>
+</head>
+<body>
+<div id="particles"></div>
+
+<header>
+  <h1>Riven</h1>
+  <h2>Minecraft Developer & Manager</h2>
+</header>
+
+<section>
+  <h3>About Me</h3>
+  <p>Hello! I am <b>Riven</b>, a dedicated Minecraft developer and server manager. I create unique player experiences, optimize server performance, and manage game mechanics to ensure smooth gameplay worldwide.</p>
+</section>
+
+<section>
+  <h3>Skills</h3>
+  <ul>
+    <li>Plugin Development (Spigot / PaperMC)</li>
+    <li>Java & Skript Scripting</li>
+    <li>Server Management & Optimization</li>
+    <li>Performance Debugging (TPS / Lag Fixing)</li>
+    <li>Team Leadership & Project Coordination</li>
+  </ul>
+</section>
+
+<section>
+  <h3>Contact</h3>
+  <div class="social">
+    <a href="mailto:riven.developer@gmail.com">Email: riven.developer@gmail.com</a>
+    <a href="https://discord.com/users/Riven121" target="_blank">Discord: Riven121</a>
+    <a href="https://github.com/Riven121" target="_blank">GitHub: Riven121</a>
+  </div>
+</section>
+
+<script>
+// Particle animation
+const canvas = document.createElement('canvas');
+const ctx = canvas.getContext('2d');
+document.getElementById('particles').appendChild(canvas);
+
+let particles = [];
+let num = 50;
+
+function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+window.addEventListener('resize', resize);
+resize();
+
+for(let i=0;i<num;i++){
+  particles.push({ x:Math.random()*canvas.width, y:Math.random()*canvas.height, r:Math.random()*2+1, dx:(Math.random()-0.5)*1.2, dy:(Math.random()-0.5)*1.2 });
+}
+
+function draw(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  ctx.fillStyle='#00ff9d';
+  for(let p of particles){
+    ctx.beginPath();
+    ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+    ctx.fill();
+    p.x+=p.dx;
+    p.y+=p.dy;
+    if(p.x<0||p.x>canvas.width)p.dx*=-1;
+    if(p.y<0||p.y>canvas.height)p.dy*=-1;
+  }
+  requestAnimationFrame(draw);
+}
+draw();
+</script>
+
+</body>
+</html>
